@@ -1,0 +1,2 @@
+obj\Debug\netcoreapp3.1\Protos/Recording.cs \
+obj\Debug\netcoreapp3.1\Protos/RecordingGrpc.cs: Protos/Recording.proto

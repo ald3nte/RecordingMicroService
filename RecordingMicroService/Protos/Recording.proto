@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+
+option csharp_namespace = "GrpcServer";
+
+
+service Recording {
+
+rpc  GetRecordingFile (RecordingLookupModel) returns (RecordingModel);
+
+}
+
+
+message RecordingLookupModel{
+	int32 recordingId = 1;
+}
+
+message RecordingModel {
+	int32 Id = 1;
+	string Name = 2;
+	bytes RefordingFile = 3;
+}
