@@ -40,11 +40,14 @@ namespace RecordingMicroService.Services
                     byte[] RecordingData = System.IO.File.ReadAllBytes(filePath);
                     
                     fileStream.Read(RecordingData, 0, System.Convert.ToInt32(fileStream.Length));
+
+                
                     output.RefordingFile = ByteString.CopyFrom(RecordingData);
                 }
-
+                
                 output.Id = Recording.Id;
                 output.Name = Recording.Name;
+                output.Extension = Path.GetExtension(filePath);    
 
                 return Task.FromResult(output);
             

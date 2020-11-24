@@ -1,6 +1,8 @@
-﻿using Grpc.Net.Client;
+﻿using Google.Protobuf;
+using Grpc.Net.Client;
 using GrpcServer;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace RecordingClient
@@ -15,6 +17,13 @@ namespace RecordingClient
             var clientRequested = new RecordingLookupModel { RecordingId = 1 };
 
             var recording = await recordingClient.GetRecordingFileAsync(clientRequested);
+
+            var fileName = recording.Name + "." + recording.Extension;
+
+            var filePath = Path.Combine( @"C:\path", fileName);
+
+            System.IO.File.WriteAllBytes(filePath, recording.RefordingFile.ToByteArray());
+
 
             Console.WriteLine($"{ recording.Name }");
 

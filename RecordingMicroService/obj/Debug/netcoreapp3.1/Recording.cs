@@ -25,16 +25,16 @@ namespace GrpcServer {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZQcm90b3MvUmVjb3JkaW5nLnByb3RvIisKFFJlY29yZGluZ0xvb2t1cE1v",
-            "ZGVsEhMKC3JlY29yZGluZ0lkGAEgASgFIkEKDlJlY29yZGluZ01vZGVsEgoK",
+            "ZGVsEhMKC3JlY29yZGluZ0lkGAEgASgFIlQKDlJlY29yZGluZ01vZGVsEgoK",
             "AklkGAEgASgFEgwKBE5hbWUYAiABKAkSFQoNUmVmb3JkaW5nRmlsZRgDIAEo",
-            "DDJHCglSZWNvcmRpbmcSOgoQR2V0UmVjb3JkaW5nRmlsZRIVLlJlY29yZGlu",
-            "Z0xvb2t1cE1vZGVsGg8uUmVjb3JkaW5nTW9kZWxCDaoCCkdycGNTZXJ2ZXJi",
-            "BnByb3RvMw=="));
+            "DBIRCglFeHRlbnNpb24YBCABKAkyRwoJUmVjb3JkaW5nEjoKEEdldFJlY29y",
+            "ZGluZ0ZpbGUSFS5SZWNvcmRpbmdMb29rdXBNb2RlbBoPLlJlY29yZGluZ01v",
+            "ZGVsQg2qAgpHcnBjU2VydmVyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcServer.RecordingLookupModel), global::GrpcServer.RecordingLookupModel.Parser, new[]{ "RecordingId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcServer.RecordingModel), global::GrpcServer.RecordingModel.Parser, new[]{ "Id", "Name", "RefordingFile" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcServer.RecordingModel), global::GrpcServer.RecordingModel.Parser, new[]{ "Id", "Name", "RefordingFile", "Extension" }, null, null, null, null)
           }));
     }
     #endregion
@@ -198,6 +198,7 @@ namespace GrpcServer {
       id_ = other.id_;
       name_ = other.name_;
       refordingFile_ = other.refordingFile_;
+      extension_ = other.extension_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -239,6 +240,17 @@ namespace GrpcServer {
       }
     }
 
+    /// <summary>Field number for the "Extension" field.</summary>
+    public const int ExtensionFieldNumber = 4;
+    private string extension_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Extension {
+      get { return extension_; }
+      set {
+        extension_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as RecordingModel);
@@ -255,6 +267,7 @@ namespace GrpcServer {
       if (Id != other.Id) return false;
       if (Name != other.Name) return false;
       if (RefordingFile != other.RefordingFile) return false;
+      if (Extension != other.Extension) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -264,6 +277,7 @@ namespace GrpcServer {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (RefordingFile.Length != 0) hash ^= RefordingFile.GetHashCode();
+      if (Extension.Length != 0) hash ^= Extension.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -289,6 +303,10 @@ namespace GrpcServer {
         output.WriteRawTag(26);
         output.WriteBytes(RefordingFile);
       }
+      if (Extension.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Extension);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -305,6 +323,9 @@ namespace GrpcServer {
       }
       if (RefordingFile.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(RefordingFile);
+      }
+      if (Extension.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Extension);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -325,6 +346,9 @@ namespace GrpcServer {
       }
       if (other.RefordingFile.Length != 0) {
         RefordingFile = other.RefordingFile;
+      }
+      if (other.Extension.Length != 0) {
+        Extension = other.Extension;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -347,6 +371,10 @@ namespace GrpcServer {
           }
           case 26: {
             RefordingFile = input.ReadBytes();
+            break;
+          }
+          case 34: {
+            Extension = input.ReadString();
             break;
           }
         }
